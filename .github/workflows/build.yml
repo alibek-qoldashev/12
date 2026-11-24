@@ -16,12 +16,13 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - uses: android-actions/setup-android@v3
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.14.3'
       - name: Build release APK
-        run: gradle :app:assembleRelease --no-daemon
+        run: |
+          echo "sdk.dir=$ANDROID_HOME" > local.properties
+          gradle :app:assembleRelease --no-daemon
       - name: Rename
         run: cp app/build/outputs/apk/release/app-release.apk ImtihonQalqoni.apk
       - uses: actions/upload-artifact@v4
