@@ -74,36 +74,8 @@ public class MainActivity extends Activity {
                 + " • Sana/vaqtni o'zgartirib bo'lmaydi\n"
                 + " • Xavfsiz rejim va ADB o'chirilgan\n\n"
                 + "✅ Instagram, Telegram va boshqa oddiy ilovalar ishlaydi.\n"
-                + "22-dekabr kelganda qulf o'zi avtomatik ochiladi.");
-
-        if (Lock.canSetPassword(this)) {
-            section("Favqulodda parol (ixtiyoriy)");
-            text("Bu parolni SIZ emas, ishonchli odam (ota-ona, aka-uka) kiritsin. "
-                    + "Faqat shu oyna ochiq turgan 15 daqiqa ichida o'rnatish mumkin. Keyin hech qachon o'zgarmaydi.");
-            EditText pw1 = input("Parol (kamida 6 belgi)");
-            EditText pw2 = input("Parolni takrorlang");
-            button("Parolni saqlash", () -> {
-                String a = pw1.getText().toString(), b = pw2.getText().toString();
-                if (!a.equals(b)) toast("Parollar mos emas");
-                else if (Lock.setPassword(this, a)) { toast("Saqlandi"); render(); }
-                else toast("Parol kamida 6 belgi bo'lsin");
-            });
-        } else if (Lock.hasPassword(this)) {
-            section("Favqulodda ochish");
-            long until = Lock.passwordLockedUntil(this);
-            if (System.currentTimeMillis() < until) {
-                text("Noto'g'ri urinish. Keyingi urinish: " + DateFormat.getTimeInstance().format(new Date(until)));
-            } else {
-                EditText pw = input("Ishonchli odamdagi parol");
-                button("Qulfni ochish", () -> {
-                    if (Lock.checkPassword(this, pw.getText().toString())) {
-                        Lock.release(this);
-                        toast("Qulf ochildi");
-                    } else toast("Noto'g'ri parol");
-                    render();
-                });
-            }
-        }
+                + "22-dekabr kelganda qulf o'zi avtomatik ochiladi.\n"
+                + "Parol yo'q: muddatidan oldin hech kim ocha olmaydi.");
 
         handler.removeCallbacksAndMessages(null);
         handler.postDelayed(this::render, 60_000);

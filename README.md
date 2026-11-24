@@ -27,12 +27,11 @@ Samsung Galaxy S25 (Android 15) uchun ilova. U **2026-yil 22-dekabrgacha** o'yin
    adb shell dpm set-device-owner uz.focus.examlock/.AdminReceiver
    ```
    `Success: Device owner set to package ...` chiqsa, tayyor.
-5. Ilovani oching. Agar xohlasangiz, **15 daqiqa ichida** ishonchli odam (ota-onangiz) *favqulodda parol* qo'yadi. Siz bu parolni bilmasligingiz kerak.
+5. Ilovani oching. Parol yo'q: qulfni 22-dekabrdan oldin hech kim, hatto siz ham ocha olmaysiz.
 6. Google va Samsung akkauntlaringizni qayta qo'shing.
 
 ## Ochilish
 - **22-dekabr 00:00 (Toshkent vaqti)** kelganda hamma cheklov o'zi olib tashlanadi. Ilovani ochib, "Ilovani o'chirish" tugmasini bosasiz.
-- Favqulodda holatda: ishonchli odam parolni kiritadi. Har noto'g'ri urinishdan keyin kutish vaqti oshib boradi.
 
 ## Cheklovlar (halol aytaman)
 - Telefonni **Recovery rejimida** (Power + Volume Up) to'liq tozalash baribir mumkin. Lekin bunda telefondagi **barcha ma'lumotlar** o'chib ketadi.
