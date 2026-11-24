@@ -51,7 +51,7 @@ public final class Lock {
             UserManager.DISALLOW_CONFIG_DATE_TIME,                   // Sanani 22-dekabrga surib bo'lmaydi
             UserManager.DISALLOW_ADD_USER,                           // Yangi foydalanuvchi ochib bo'lmaydi
             UserManager.DISALLOW_ADD_MANAGED_PROFILE,                // Ish profili / Secure Folder
-            UserManager.DISALLOW_ADD_CLONE_PROFILE,
+            "no_add_clone_profile",                                  // Klon profil (Dual Messenger kabi)
     };
 
     private static final String PREFS = "examlock";
