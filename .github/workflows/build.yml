@@ -1,0 +1,37 @@
+name: Build APK
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.14.3'
+      - name: Build release APK
+        run: gradle :app:assembleRelease --no-daemon
+      - name: Rename
+        run: cp app/build/outputs/apk/release/app-release.apk ImtihonQalqoni.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ImtihonQalqoni
+          path: ImtihonQalqoni.apk
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="build-${{ github.run_number }}"
+          gh release create "$TAG" ImtihonQalqoni.apk --target "${{ github.sha }}" \
+            --title "Imtihon Qalqoni ($TAG)" --notes "Telefonga o'rnatish uchun APK. Yo'riqnoma README.md da."

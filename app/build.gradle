@@ -1,0 +1,35 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'uz.focus.examlock'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'uz.focus.examlock'
+        minSdk 30
+        targetSdk 35
+        versionCode 1
+        versionName '1.0'
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('examlock.jks')
+            storePassword 'examlock123'
+            keyAlias 'examlock'
+            keyPassword 'examlock123'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
